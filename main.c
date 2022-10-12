@@ -143,7 +143,7 @@ void clearNumberOnClock(int num){
 				break;
 		}
 }
-void ledOn(int num){
+void ledOn(int num){ //turn on a led if its modulo to 5 is 0
 	switch(num){
 		case 0:
 		case 5:
@@ -161,7 +161,7 @@ void ledOn(int num){
 			break;
 		}
 }
-void ledOff(int num){
+void ledOff(int num){ //turn off a led that was on previously
 	switch(num){
 		case 5:
 		case 10:
@@ -181,7 +181,7 @@ void ledOff(int num){
 			break;
 		}
 }
-int check(int a,int b){
+int check(int a,int b){ //check if 2 leds are next to each other or not 
 	int temp=1;
 	if(a-b==1||a-b==-11) temp=0;
 	return temp;
@@ -232,13 +232,14 @@ int main(void)
   clearAllClock();
   while (1)
   {
-	  secondstate=second/5;
-	  minutestate=minute/5;
-	  hourstate=hour/5;
+	  /* USER CODE BEGIN 3 */
+	  secondstate=second/5; //current led position of second
+	  minutestate=minute/5; //current led position of minute
+	  hourstate=hour/5;	//current led position of hour
 	  ledOn(second);
 	  ledOn(minute);
 	  ledOn(hour*5);
-	  if(second%5==0){
+	  if(second%5==0){ //when second change position check if led previous it was occupied by minute or hour, if not then turn off
 		  if(check(secondstate,minutestate)&&check(secondstate,hourstate)){
 			  ledOff(second);
 		  }
@@ -253,7 +254,8 @@ int main(void)
 			  ledOff(hour);
 		  }
 	  }
-	if(second>=59){
+	 //reset second, minute and hour
+	if(second>=59){ 
 		second=0;
 		minute++;
 	}else{
