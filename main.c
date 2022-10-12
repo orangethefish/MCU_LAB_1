@@ -94,30 +94,30 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-	if(timeon==2){
+	
+
+
+    /* USER CODE BEGIN 3 */
+	if(timeon==2){ //if a led is on for 2s then change state
 		timeon=0;
 		ledtype=1;
 	}
 	switch(ledtype){
-	case(1):
+	case(1): //turn off both led at 0s
 		HAL_GPIO_TogglePin ( LED_RED_GPIO_Port , LED_RED_Pin ) ;
 		HAL_GPIO_TogglePin ( LED_YELLOW_GPIO_Port , LED_YELLOW_Pin ) ;
-		ledtype=0;
+		ledtype=0; 
 		timeon++;
 		break;
 	case(2):
-			HAL_GPIO_TogglePin ( LED_YELLOW_GPIO_Port , LED_YELLOW_Pin ) ;
+			HAL_GPIO_TogglePin ( LED_YELLOW_GPIO_Port , LED_YELLOW_Pin ) ; //turn off red and turn on yellow or vice versa
 			ledtype=1;
 			timeon++;
 			break;
 	default:
-			timeon++;
+			timeon++; // if led is only on for a sec then do nothing
 			break;
 	}
-
-
-    /* USER CODE BEGIN 3 */
-
 	  HAL_Delay (1000) ;
 
   }
