@@ -176,7 +176,7 @@ int main(void)
   MX_GPIO_Init();
   /* USER CODE BEGIN 2 */
   int time=0;
-  HAL_GPIO_TogglePin ( LED_RED_1_GPIO_Port , LED_RED_1_Pin ) ;
+  HAL_GPIO_TogglePin ( LED_RED_1_GPIO_Port , LED_RED_1_Pin ) ; //turn off all except for green_1 and red_2
   HAL_GPIO_TogglePin ( LED_YELLOW_1_GPIO_Port , LED_YELLOW_1_Pin ) ;
   HAL_GPIO_TogglePin ( LED_GREEN_2_GPIO_Port , LED_GREEN_2_Pin ) ;
   HAL_GPIO_TogglePin ( LED_YELLOW_2_GPIO_Port , LED_YELLOW_2_Pin ) ;
@@ -184,7 +184,7 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  int counter=0;
+  int counter=9; //counter for 7seg
   while (1)
   {
     /* USER CODE END WHILE */
