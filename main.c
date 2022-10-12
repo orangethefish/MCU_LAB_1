@@ -193,34 +193,34 @@ int main(void)
 	  if(counter<0) counter=9;
 	  display7SEG(counter--);
 	  switch(time){
-	  	case(3):
-	  			HAL_GPIO_TogglePin(LED_GREEN_1_GPIO_Port, LED_GREEN_1_Pin);
-	  			HAL_GPIO_TogglePin(LED_YELLOW_1_GPIO_Port , LED_YELLOW_1_Pin ) ;
-	  			time++;
-	  			break;
-	  	case(5):
-	  			HAL_GPIO_TogglePin(LED_YELLOW_1_GPIO_Port , LED_YELLOW_1_Pin ) ;
-	  	 	 	HAL_GPIO_TogglePin ( LED_RED_1_GPIO_Port , LED_RED_1_Pin ) ;
-	  	 	 	HAL_GPIO_TogglePin ( LED_GREEN_2_GPIO_Port , LED_GREEN_2_Pin ) ;
-	  	 	 	HAL_GPIO_TogglePin ( LED_RED_2_GPIO_Port , LED_RED_2_Pin ) ;
-	  		  	time++;
-	  			break;
-	  	case(8):
-	  			HAL_GPIO_TogglePin ( LED_YELLOW_2_GPIO_Port , LED_YELLOW_2_Pin ) ;
-	  			HAL_GPIO_TogglePin ( LED_GREEN_2_GPIO_Port , LED_GREEN_2_Pin ) ;
-	  			time++;
-	  			break;
-	  	case(10):
-	  			HAL_GPIO_TogglePin ( LED_YELLOW_2_GPIO_Port , LED_YELLOW_2_Pin ) ;
-	  			HAL_GPIO_TogglePin ( LED_RED_2_GPIO_Port , LED_RED_2_Pin ) ;
-	  			HAL_GPIO_TogglePin ( LED_RED_1_GPIO_Port , LED_RED_1_Pin ) ;
-	  			HAL_GPIO_TogglePin ( LED_GREEN_1_GPIO_Port , LED_GREEN_1_Pin ) ;
-	  			time=1;
-	  			break;
-	  	default:
-	  			time++;
-	  			break;
-	  	}
+		case(3): //turn off green_1 and turn off yellow_1
+			HAL_GPIO_TogglePin(LED_GREEN_1_GPIO_Port, LED_GREEN_1_Pin);
+			HAL_GPIO_TogglePin(LED_YELLOW_1_GPIO_Port , LED_YELLOW_1_Pin ) ;
+			time++;
+			break;
+		case(5): //turn off yellow_1, red_2 turn on red_1, green_2
+ 			HAL_GPIO_TogglePin(LED_YELLOW_1_GPIO_Port , LED_YELLOW_1_Pin ) ;
+	 	 	HAL_GPIO_TogglePin ( LED_RED_1_GPIO_Port , LED_RED_1_Pin ) ;
+	 	 	HAL_GPIO_TogglePin ( LED_GREEN_2_GPIO_Port , LED_GREEN_2_Pin ) ;
+	 	 	HAL_GPIO_TogglePin ( LED_RED_2_GPIO_Port , LED_RED_2_Pin ) ;
+		  	time++;
+			break;
+		case(8): //turn off green_2 turn on yellow_2
+			HAL_GPIO_TogglePin ( LED_YELLOW_2_GPIO_Port , LED_YELLOW_2_Pin ) ;
+			HAL_GPIO_TogglePin ( LED_GREEN_2_GPIO_Port , LED_GREEN_2_Pin ) ;
+			time++;
+			break;
+		case(10): //turn off yellow_2, red_1 turn on red_2, green_1
+			HAL_GPIO_TogglePin ( LED_YELLOW_2_GPIO_Port , LED_YELLOW_2_Pin ) ;
+			HAL_GPIO_TogglePin ( LED_RED_2_GPIO_Port , LED_RED_2_Pin ) ;
+			HAL_GPIO_TogglePin ( LED_RED_1_GPIO_Port , LED_RED_1_Pin ) ;
+			HAL_GPIO_TogglePin ( LED_GREEN_1_GPIO_Port , LED_GREEN_1_Pin ) ;
+			time=1;
+			break;
+		default: //do nothing
+			time++;
+			break;
+	}
 	  HAL_Delay (1000) ;
 
   }
