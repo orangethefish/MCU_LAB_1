@@ -88,7 +88,7 @@ int main(void)
   /* USER CODE BEGIN 2 */
   int ledstatus=3; //3 is beginning 2 is red 1 is yellow 0 is green
   int timeon=0;
-  int ledtype=3;
+  int ledtype=3; //simillar to ledstatus, updated after second switch
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -96,7 +96,10 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-	switch(ledtype){
+	
+    /* USER CODE BEGIN 3 */
+switch(ledtype){ //if condition not met then ledstatus is set to -1
+		//else set to the next state
 	case(2):
 		if(timeon>=2){
 			timeon=0;
@@ -122,8 +125,8 @@ int main(void)
 		}
 		break;
 	}
-	switch(ledstatus){
-	case(3): //red no change yellow green off
+	switch(ledstatus){ 
+	case(3): //red no change yellow green off, starting case
 //			HAL_GPIO_TogglePin ( LED_RED_GPIO_Port , LED_RED_Pin ) ;
 			HAL_GPIO_TogglePin ( LED_YELLOW_GPIO_Port , LED_YELLOW_Pin ) ;
 			HAL_GPIO_TogglePin ( LED_GREEN_GPIO_Port , LED_GREEN_Pin ) ;
@@ -151,12 +154,10 @@ int main(void)
 			ledtype=ledstatus;
 			timeon++;
 			break;
-	default:
+	default: //increment timeon only
 			timeon++;
 			break;
 	}
-    /* USER CODE BEGIN 3 */
-
 	  HAL_Delay (1000) ;
 
   }
